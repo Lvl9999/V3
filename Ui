@@ -1,0 +1,343 @@
+--[[
+██████╗░░█████╗░  ███╗░░██╗░█████╗░████████╗  ░██████╗████████╗███████╗░█████╗░██╗░░░░░
+██╔══██╗██╔══██╗  ████╗░██║██╔══██╗╚══██╔══╝  ██╔════╝╚══██╔══╝██╔════╝██╔══██╗██║░░░░░
+██║░░██║██║░░██║  ██╔██╗██║██║░░██║░░░██║░░░  ╚█████╗░░░░██║░░░█████╗░░███████║██║░░░░░
+██║░░██║██║░░██║  ██║╚████║██║░░██║░░░██║░░░  ░╚═══██╗░░░██║░░░██╔══╝░░██╔══██║██║░░░░░
+██████╔╝╚█████╔╝  ██║░╚███║╚█████╔╝░░░██║░░░  ██████╔╝░░░██║░░░███████╗██║░░██║███████╗
+╚═════╝░░╚════╝░  ╚═╝░░╚══╝░╚════╝░░░░╚═╝░░░  ╚═════╝░░░░╚═╝░░░╚══════╝╚═╝░░╚═╝╚══════╝
+--]]
+
+local v0 = "LOL!043O00030A3O006C6F6164737472696E6703043O0067616D6503073O00482O7470476574033C3O00682O7470733A2O2F7261772E67697468756275736572636F6E74656E742E636F6D2F657A70657A622O6F6D2F5549332F6D61696E2F54455354494E4700083O0012063O00013O001206000100023O002005000100010003001201000300044O0002000100034O00035O00022O00043O000100016O00017O00083O00013O00013O00013O00013O00013O00013O00013O00013O00";
+local v1 = "unpack";
+local v2 = "insert";
+local v3 = "concat";
+local v4 = "sub";
+local v5 = tonumber;
+local v6 = string.byte;
+local v7 = string.char;
+local v8 = string[v4];
+local v9 = string.gsub;
+local v10 = string.rep;
+local v11 = table[v3];
+local v12 = table[v2];
+local v13 = math.ldexp;
+local v14 = getfenv or function()
+	return _ENV;
+end;
+local v15 = setmetatable;
+local v16 = pcall;
+local v17 = select;
+local v18 = unpack or table[v1];
+local v19 = tonumber;
+local function v20(v21, v22, ...)
+	local v23 = "..";
+	local v24 = 1;
+	local v25 = v24;
+	local v26;
+	v21 = v9(v8(v21, 5), v23, function(v27)
+		local v45 = 79;
+		local v46 = 2;
+		if (v6(v27, v46) == v45) then
+			local v122 = "";
+			v26 = v5(v8(v27, 1, 1));
+			return v122;
+		else
+			local v123 = v7(v5(v27, 16));
+			if v26 then
+				local v163 = nil;
+				local v164 = v10(v123, v26);
+				v26 = v163;
+				return v164;
+			else
+				return v123;
+			end
+		end
+	end);
+	local function v28(v29, v30, v31)
+		if v31 then
+			local v124 = 1;
+			local v125 = 1;
+			local v126 = (v29 / (2 ^ (v30 - 1))) % (2 ^ (((v31 - v125) - (v30 - 1)) + v124));
+			return v126 - (v126 % 1);
+		else
+			local v127 = 0;
+			local v128 = 2 ^ (v30 - 1);
+			return (((v29 % (v128 + v128)) >= v128) and 1) or v127;
+		end
+	end
+	local function v32()
+		local v47 = v6(v21, v25, v25);
+		v25 = v25 + 1;
+		return v47;
+	end
+	local function v33()
+		local v48 = 2;
+		local v49, v50 = v6(v21, v25, v25 + 2);
+		v25 = v25 + v48;
+		return (v50 * 256) + v49;
+	end
+	local function v34()
+		local v51 = 65536;
+		local v52 = 4;
+		local v53 = 3;
+		local v54, v55, v56, v57 = v6(v21, v25, v25 + v53);
+		v25 = v25 + v52;
+		return (v57 * 16777216) + (v56 * v51) + (v55 * 256) + v54;
+	end
+	local function v35()
+		local v58 = 52;
+		local v59 = 2;
+		local v60 = 1023;
+		local v61 = 0;
+		local v62 = 1;
+		local v63 = 1;
+		local v64 = 1;
+		local v65 = 32;
+		local v66 = 31;
+		local v67 = 21;
+		local v68 = 32;
+		local v69 = v34();
+		local v70 = v34();
+		local v71 = 1;
+		local v72 = (v28(v70, 1, 20) * (2 ^ v68)) + v69;
+		local v73 = v28(v70, v67, v66);
+		local v74 = ((v28(v70, v65) == v64) and -v63) or v62;
+		if (v73 == v61) then
+			if (v72 == 0) then
+				return v74 * 0;
+			else
+				local v165 = 0;
+				v73 = 1;
+				v71 = v165;
+			end
+		elseif (v73 == 2047) then
+			local v166 = 1;
+			return ((v72 == 0) and (v74 * (v166 / 0))) or (v74 * NaN);
+		end
+		return v13(v74, v73 - v60) * (v71 + (v72 / (v59 ^ v58)));
+	end
+	local function v36(v37)
+		local v75 = 1;
+		local v76;
+		if not v37 then
+			local v129 = 0;
+			v37 = v34();
+			if (v37 == v129) then
+				return "";
+			end
+		end
+		v76 = v8(v21, v25, (v25 + v37) - v75);
+		v25 = v25 + v37;
+		local v77 = {};
+		for v98 = 1, #v76 do
+			v77[v98] = v7(v6(v8(v76, v98, v98)));
+		end
+		return v11(v77);
+	end
+	local v38 = v34;
+	local function v39(...)
+		local v78 = 1;
+		return {...}, v17("#", ...);
+	end
+	local function v40()
+		local v79 = 1;
+		local v80 = 1;
+		local v81 = 1;
+		local v82 = 3;
+		local v83 = 1;
+		local v84 = 4;
+		local v85 = 3;
+		local v86 = {};
+		local v87 = {};
+		local v88 = {};
+		local v89 = {v86,v87,nil,v88};
+		local v90 = v34();
+		local v91 = {};
+		for v100 = v83, v90 do
+			local v101 = 1;
+			local v102 = v32();
+			local v103;
+			if (v102 == v101) then
+				local v141 = 0;
+				v103 = v32() ~= v141;
+			elseif (v102 == 2) then
+				v103 = v35();
+			else
+				local v167 = 3;
+				if (v102 == v167) then
+					v103 = v36();
+				end
+			end
+			v91[v100] = v103;
+		end
+		v89[v82] = v32();
+		for v105 = v81, v34() do
+			local v106 = 0;
+			local v107 = 1;
+			local v108 = v32();
+			if (v28(v108, v107, 1) == v106) then
+				local v142 = 1;
+				local v143 = nil;
+				local v144 = 4;
+				local v145 = nil;
+				local v146 = 6;
+				local v147 = 3;
+				local v148 = v28(v108, 2, v147);
+				local v149 = v28(v108, 4, v146);
+				local v150 = {v33(),v33(),v145,v143};
+				if (v148 == 0) then
+					local v168 = 4;
+					local v169 = 3;
+					v150[v169] = v33();
+					v150[v168] = v33();
+				elseif (v148 == 1) then
+					local v186 = 3;
+					v150[v186] = v34();
+				else
+					local v188 = 2;
+					if (v148 == v188) then
+						local v191 = 2;
+						local v192 = 3;
+						v150[v192] = v34() - (v191 ^ 16);
+					else
+						local v194 = 3;
+						if (v148 == v194) then
+							local v222 = 16;
+							local v223 = 2;
+							v150[3] = v34() - (v223 ^ v222);
+							v150[4] = v33();
+						end
+					end
+				end
+				if (v28(v149, 1, v142) == 1) then
+					v150[2] = v91[v150[2]];
+				end
+				if (v28(v149, 2, 2) == 1) then
+					v150[3] = v91[v150[3]];
+				end
+				if (v28(v149, 3, 3) == 1) then
+					local v176 = 4;
+					v150[v176] = v91[v150[4]];
+				end
+				v86[v105] = v150;
+			end
+		end
+		for v109 = v80, v34() do
+			v87[v109 - 1] = v40();
+		end
+		for v111 = v79, v34() do
+			v88[v111] = v34();
+		end
+		return v89;
+	end
+	local function v41(v42, v43, v44)
+		local v93 = 2;
+		local v94 = 1;
+		local v95 = v42[v94];
+		local v96 = v42[v93];
+		local v97 = v42[3];
+		return function(...)
+			local v113 = 1;
+			local v114 = 1;
+			local v115 = "#";
+			local v116 = 1;
+			local v117 = v116;
+			local v118 = -1;
+			local v119 = {...};
+			local v120 = v17(v115, ...) - v114;
+			local function v121()
+				local v130 = true;
+				local v131 = v95;
+				local v132 = v96;
+				local v133 = v97;
+				local v134 = v39;
+				local v135 = {};
+				local v136 = {};
+				local v137 = {};
+				for v152 = 0, v120 do
+					if (v152 >= v133) then
+						local v179 = 1;
+						v135[v152 - v133] = v119[v152 + v179];
+					else
+						local v182 = 1;
+						v137[v152] = v119[v152 + v182];
+					end
+				end
+				local v138 = (v120 - v133) + 1;
+				local v139;
+				local v140;
+				while v130 do
+					local v153 = 1;
+					local v154 = 2;
+					local v155 = 1;
+					v139 = v131[v117];
+					v140 = v139[v155];
+					if (v140 <= v154) then
+						if (v140 <= 0) then
+							do
+								return;
+							end
+						else
+							local v189 = 1;
+							if (v140 > v189) then
+								local v195 = 1;
+								local v196 = v139[2];
+								local v197, v198 = v134(v137[v196](v18(v137, v196 + v195, v139[3])));
+								v118 = (v198 + v196) - 1;
+								local v199 = 0;
+								for v218 = v196, v118 do
+									local v219 = 1;
+									v199 = v199 + v219;
+									v137[v218] = v197[v199];
+								end
+							else
+								local v200 = 3;
+								v137[v139[2]] = v139[v200];
+							end
+						end
+					else
+						local v185 = 4;
+						if (v140 <= v185) then
+							if (v140 == 3) then
+								local v203 = 1;
+								local v204 = v139[2];
+								v137[v204] = v137[v204](v18(v137, v204 + v203, v118));
+							else
+								local v206 = 2;
+								v137[v139[v206]]();
+							end
+						else
+							local v190 = 5;
+							if (v140 == v190) then
+								local v207 = 4;
+								local v208 = 3;
+								local v209 = 2;
+								local v210 = v139[v209];
+								local v211 = v137[v139[v208]];
+								v137[v210 + 1] = v211;
+								v137[v210] = v211[v139[v207]];
+							else
+								local v215 = 3;
+								v137[v139[2]] = v44[v139[v215]];
+							end
+						end
+					end
+					v117 = v117 + v153;
+				end
+			end
+			A, B = v39(v16(v121));
+			if not A[v113] then
+				local v158 = 2;
+				local v159 = "]:";
+				local v160 = "?";
+				local v161 = v42[4][v117] or v160;
+				error("Script error at [" .. v161 .. v159 .. A[v158]);
+			else
+				local v162 = 2;
+				return v18(A, v162, B);
+			end
+		end;
+	end
+	return v41(v40(), {}, v22)(...);
+end
+v20(v0, v14(), ...);
